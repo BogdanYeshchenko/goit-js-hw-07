@@ -17,7 +17,7 @@ el.gallery.innerHTML = galleryItemsHtml;
 
 el.gallery.addEventListener("click", hanleGalleryModalWithImage);
 
-const hanleGalleryModalWithImage = (event) => {
+function hanleGalleryModalWithImage(event) {
   event.preventDefault();
 
   const isClickOnImg = event.target.classList.contains("gallery__image");
@@ -41,4 +41,4 @@ const hanleGalleryModalWithImage = (event) => {
 
     instance.close();
   });
-};
+}
