@@ -40,8 +40,8 @@ function hanleGalleryModalWithImage(event) {
     }
     console.log(ev.code);
 
-    instance.close();
+    instance.close(() =>
+      el.gallery.removeEventListener("keydown", hanleCloseModalByEsc)
+    );
   }
 }
-
-el.gallery.removeEventListener("keydown", hanleCloseModalByEsc);
