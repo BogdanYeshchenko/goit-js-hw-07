@@ -21,24 +21,27 @@ function hanleGalleryModalWithImage(event) {
   event.preventDefault();
 
   const isClickOnImg = event.target.classList.contains("gallery__image");
+  const imgSource = event.target.dataset.source;
 
   if (!isClickOnImg) {
     return;
   }
-
-  const imgSource = event.target.dataset.source;
 
   const instance = basicLightbox.create(`
     <img src="${imgSource}" width="800" height="600">`);
 
   instance.show();
 
-  el.gallery.addEventListener("keydown", (ev) => {
+  el.gallery.addEventListener("keydown", hanleCloseModalByEsc);
+
+  function hanleCloseModalByEsc(ev) {
     if (ev.code !== "Escape") {
       return;
     }
     console.log(ev.code);
 
     instance.close();
-  });
+  }
 }
+
+el.gallery.removeEventListener("keydown", hanleCloseModalByEsc);
